@@ -86,7 +86,7 @@ jobs:
               run: aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.EKS_CLUSTER }}
 
             - name: Login to ECR 
-              run: kubectl create secret docker-registry regcred --docker-server=${{ secret.REGISTRY }} --docker-username=AWS --docker-password=$(aws ecr get-Login-password)
+              run: kubectl create secret docker-registry regcred --docker-server=${{ secrets.REGISTRY }} --docker-username=AWS --docker-password=$(aws ecr get-Login-password)
 
             - name: Deploy to EKS with Helm
               uses: bitovi/github-actions-deploy-eks-helm@v1
