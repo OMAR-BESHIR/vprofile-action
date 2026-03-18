@@ -5,7 +5,7 @@ This repository contains the automated CI/CD pipeline for deploying the **VProfi
 ## 🏗️ Deployment Architecture
 The pipeline follows a modern DevSecOps approach, integrating security and quality checks before the deployment phase.
 
-![System Architecture](Screenshot%202026-03-15%20163518.png)
+![System Architecture](images/Screenshot%202026-03-15%20163518.png)
 
 ---
 
@@ -25,7 +25,7 @@ Once the tests pass, the application is containerized:
 * **Docker Build:** Creating a lightweight image using the project's `Dockerfile`.
 * **Amazon ECR:** The image is pushed to the AWS Elastic Container Registry with both a `latest` tag and a unique `build_number`.
 
-![Amazon ECR Repository](Screenshot%202026-03-12%20164224.png)
+![Amazon ECR Repository](images/Screenshot%202026-03-12%20164224.png)
 
 ### 3. 🚢 Deployment to EKS (Helm)
 The final stage handles the orchestration:
@@ -33,14 +33,14 @@ The final stage handles the orchestration:
 * **Docker Login:** Creating a Kubernetes secret (`regcred`) to allow EKS to pull from private ECR.
 * **Helm Deploy:** Using Helm Charts to deploy or upgrade the application stack (`vprofile-stack`) with the new image tag.
 
-![GitHub Actions Success](Screenshot%202026-03-15%20162735.png)
+![GitHub Actions Success](images/Screenshot%202026-03-15%20162735.png)
 
 ---
 
 ## 🌐 Final Result
 After a successful pipeline run, the application is live and accessible through the Ingress Controller's DNS/LoadBalancer.
 
-![Final Application Access](Screenshot%202026-03-15%20163602.png)
+![Final Application Access](images/Screenshot%202026-03-15%20163602.png)
 
 ---
 
